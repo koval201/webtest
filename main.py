@@ -22,13 +22,23 @@ try:
     )
     addresult = 'add_result/{id}'
 
+    print(runs[0].get('id'))
+
+    run = 'get_tests/{id}'
+
+    last_run = client.send_get(
+        run.format(id=runs[0].get('id'))
+    )
+
+    print(last_run[0].get('id'))
+
     upload()
     perser()
 
     
 
     add_result_passed = client.send_post(
-        addresult.format(id = runs[0].get('id')),
+        addresult.format(id = last_run[0].get('id')),
         {'status_id': 1, 'comment': 'Test passed'}
     )
 
