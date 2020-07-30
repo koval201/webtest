@@ -5,12 +5,16 @@ jobs: # A basic unit of work in a run
     working_directory: ~/circleci-demo-python
     docker: # run the steps with Docker
       # CircleCI Python images available at: https://hub.docker.com/r/circleci/python/
-      - image: circleci/python:3.6.4-browsers
+      - image: circleci/python:3.6.4-node-browsers
         environment: # environment variables for primary container
           PIPENV_VENV_IN_PROJECT: true
       # CircleCI PostgreSQL images available at: https://hub.docker.com/r/circleci/postgres/
     steps: # steps that comprise the `build` job
       - checkout 
+      - run:
+          name: istall allure CLI
+          command: |
+            sudo npm install -g allure-commandline --save-dev
       - run:
           name: install requirements
           command: |
@@ -19,3 +23,11 @@ jobs: # A basic unit of work in a run
           name: run main.py
           command: |
             python3 main.py
+      - run:
+          name: report
+          command: |
+            allure generate -c ~/circleci-demo-python/raw_test_result_jsons -o ~/circleci-demo-python/test-reports
+      - store_artifacts:
+          path: test-reports
+          destination: test-reports
+          when: always
