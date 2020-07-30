@@ -22,7 +22,7 @@ jobs: # A basic unit of work in a run
       - run:
           name: run main.py
           command: |
-            python3 main.py
+            python3 main.py --alluredir ~/circleci-demo-python/raw_test_result_jsons
       - run:
           name: report
           command: |
