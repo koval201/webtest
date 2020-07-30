@@ -39,10 +39,10 @@ jobs: # A basic unit of work in a run
           name: install selenium-node
           command: docker run -d --rm --net grid -e HUB_HOST=selenium-hub -v /dev/shm:/dev/shm selenium/node-chrome:3.11.0
       - run:
-        #name: install requirements
-        command: |
-          sudo pip install -r requirements.txt
+          name: install requirements
+          command: |
+            sudo pip install -r requirements.txt
       - run:
-        #name: run main.py
-        command: |
-          python3 main.py
+          name: run main.py
+          command: |
+            python3 main.py
