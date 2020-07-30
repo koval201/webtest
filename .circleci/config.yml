@@ -11,10 +11,10 @@ jobs: # A basic unit of work in a run
       # CircleCI PostgreSQL images available at: https://hub.docker.com/r/circleci/postgres/
     steps: # steps that comprise the `build` job
       - checkout 
-      - run:
-          name: istall allure CLI
-          command: |
-            sudo npm install -g allure-commandline --save-dev
+      #- run:
+      #    name: istall allure CLI
+      #    command: |
+      #      sudo npm install -g allure-commandline --save-dev
       - run:
           name: install requirements
           command: |
@@ -24,10 +24,10 @@ jobs: # A basic unit of work in a run
           command: |
             python3 main.py --alluredir ~/circleci-demo-python/raw_test_result_jsons
       - run:
-          name: report
-          command: |
-            allure generate -c ~/circleci-demo-python/raw_test_result_jsons -o ~/circleci-demo-python/test-reports
-      - store_artifacts:
-          path: test-reports
-          destination: test-reports
-          when: always
+      #    name: report
+      #    command: |
+      #      allure generate -c ~/circleci-demo-python/raw_test_result_jsons -o ~/circleci-demo-python/test-reports
+      #- store_artifacts:
+      #    path: test-reports
+      #   destination: test-reports
+      #   when: always
