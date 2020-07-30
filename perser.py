@@ -5,7 +5,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 def perser():
-    driver = webdriver.Chrome()
+    driver = webdriver.Firefox()
     driver.get("https://drive.google.com/drive/folders/1Bz75IcdiIB-bdmc68ux-v42hlyolup2G?usp=sharing")
     try:
         element = WebDriverWait(driver, 10).until(
