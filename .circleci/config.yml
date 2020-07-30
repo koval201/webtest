@@ -13,16 +13,8 @@ jobs: # A basic unit of work in a run
     steps: # steps that comprise the `build` job
       - checkout 
       - setup_remote_docker
-      - restore_cache:
-        keys:
-          - v1-dependencies-{{ checksum "package.json" }}
      
       - run: yarn install
-
-      - save_cache:
-        paths:
-          - node_modules
-        key: v1-dependencies-{{ checksum "package.json" }}
           
       - run:
         name: create docker network
